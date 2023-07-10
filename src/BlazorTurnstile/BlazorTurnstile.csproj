@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+      
+    <Authors>Michel Jansson</Authors>
+    <Company></Company>
+    <Copyright>Copyright 2023 (c) Michel Jansson. All rights reserved.</Copyright>
+    
+    <Description>A Blazor library for Cloudflare Turnstile.</Description>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+      
+    <!-- NuGet settings -->
+    <PackageId>BlazorTurnstile</PackageId>
+    <PackageTags>Blazor;Razor;Components;ASP.NET Core;CSharp;Web;Cloudflare;Turnstile;Captcha</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/MichelJansson/BlazorTurnstile</PackageProjectUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/MichelJansson/BlazorTurnstile</RepositoryUrl>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <SupportedPlatform Include="browser" />
+  </ItemGroup>
+  
+  <ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Components" Version="6.0.12" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.12" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net7.0'">
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Components" Version="7.0.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.8" />
+  </ItemGroup>
+
+</Project>

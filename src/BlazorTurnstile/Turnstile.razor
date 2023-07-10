@@ -1,0 +1,104 @@
+@implements IAsyncDisposable
+@inject IJSRuntime JS
+
+<div @ref="@_element"></div>
+
+@code {
+    private DotNetObjectReference<Turnstile>? _objRef;
+    private ElementReference _element;
+    private Interop? _interop;
+    private bool _shouldRender = true;
+
+    /// <summary>
+    /// This sitekey is associated with the corresponding widget configuration and is created upon the widget creation.
+    /// </summary>
+    [Parameter]
+    [EditorRequired]
+    public string SiteKey { get; set; } = default!;
+
+    /// <summary>
+    /// The token that can be validated. Populated upon successful challange.
+    /// </summary>
+    [Parameter]
+    public string? Token { get; set; }
+    [Parameter]
+    public EventCallback<string> TokenChanged { get; set; }
+
+    /// <summary>
+    /// Callback invoked upon success of the challenge. The callback is passed a token that can be validated.
+    /// </summary>
+    [Parameter]
+    public EventCallback<string> OnCallback { get; set; }
+
+    /// <summary>
+    /// Callback invoked when there is an error (e.g. network error or the challenge failed).
+    /// </summary>
+    [Parameter]
+    public EventCallback<string> OnErrorCallback { get; set; }
+
+    [Parameter]
+    public TurnstileTheme? Theme { get; set; }
+
+    /// <summary>
+    /// Controls if an input element with the response token is created, defaults to true.
+    /// </summary>
+    [Parameter]
+    public bool? ResponseField { get; set; }
+
+    /// <summary>
+    /// Name of the input element, defaults to cf-turnstile-response.
+    /// </summary>
+    [Parameter]
+    public string? ResponseFieldName { get; set; }
+
+    protected override bool ShouldRender() => _shouldRender;
+
+    protected override void OnInitialized()
+    {
+        _objRef = DotNetObjectReference.Create(this);
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            _interop = new Interop(JS);
+
+            await _interop.RenderAsync(_objRef!, _element, new TurnstileParameters(SiteKey)
+            {
+                Theme = Theme,
+                ResponseField = ResponseField,
+                ResponseFieldName = ResponseFieldName
+            });
+
+            // Only render once
+            _shouldRender = false;
+        }
+    }
+
+    [JSInvokable]
+    public async Task Callback(string token)
+    {
+        Token = token;
+        await TokenChanged.InvokeAsync(Token);
+        await OnCallback.InvokeAsync(token);
+    }
+
+    [JSInvokable]
+    public async Task ErrorCallback(string message)
+    {
+        Token = null;
+        await TokenChanged.InvokeAsync(Token);
+        await OnErrorCallback.InvokeAsync();
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        if (_interop is not null)
+        {
+            await _interop.DisposeAsync();
+        }
+
+        _objRef?.Dispose();
+    }
+}

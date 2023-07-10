@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33815.320
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorTurnstile", "src\BlazorTurnstile\BlazorTurnstile.csproj", "{11ED01E3-13FF-4CD9-AC42-1F8C0C472D2B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CCBFA76A-6F1C-4707-8424-77DCD36BAE1E}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{0C00FBA8-0C21-43E5-AA2F-88754D087503}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorWebAssembly", "samples\BlazorWebAssembly\BlazorWebAssembly.csproj", "{88185F43-375F-4D3B-B720-70C4C6487DD8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{11ED01E3-13FF-4CD9-AC42-1F8C0C472D2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11ED01E3-13FF-4CD9-AC42-1F8C0C472D2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11ED01E3-13FF-4CD9-AC42-1F8C0C472D2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11ED01E3-13FF-4CD9-AC42-1F8C0C472D2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88185F43-375F-4D3B-B720-70C4C6487DD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88185F43-375F-4D3B-B720-70C4C6487DD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88185F43-375F-4D3B-B720-70C4C6487DD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88185F43-375F-4D3B-B720-70C4C6487DD8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{88185F43-375F-4D3B-B720-70C4C6487DD8} = {0C00FBA8-0C21-43E5-AA2F-88754D087503}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {507D9EF3-12D1-4F96-8EB1-6D5330A63FCC}
+	EndGlobalSection
+EndGlobal
