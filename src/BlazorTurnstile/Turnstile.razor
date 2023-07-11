@@ -1,7 +1,7 @@
 @implements IAsyncDisposable
 @inject IJSRuntime JS
 
-<div @ref="@_element"></div>
+<div @ref="@_element" class="cf-turnstile"></div>
 
 @code {
     private DotNetObjectReference<Turnstile>? _objRef;
