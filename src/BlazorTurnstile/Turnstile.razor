@@ -36,8 +36,23 @@
     [Parameter]
     public EventCallback<string> OnErrorCallback { get; set; }
 
+    /// <summary>
+    /// A customer value that can be used to differentiate widgets under the same sitekey in analytics and which is returned upon validation. This can only contain up to 32 alphanumeric characters including _ and -.
+    /// </summary>
+    [Parameter]
+    public string Action { get; set; } = string.Empty;
+
+    /// <summary>
+    /// The widget theme. The default is auto, which respects the user preference.
+    /// </summary>
     [Parameter]
     public TurnstileTheme? Theme { get; set; }
+
+    /// <summary>
+    /// The widget size.
+    /// </summary>
+    [Parameter]
+    public TurnstileSize? Size { get; set; }
 
     /// <summary>
     /// Controls if an input element with the response token is created, defaults to true.
@@ -66,7 +81,9 @@
 
             await _interop.RenderAsync(_objRef!, _element, new TurnstileParameters(SiteKey)
             {
+                Action = Action,
                 Theme = Theme,
+                Size = Size,
                 ResponseField = ResponseField,
                 ResponseFieldName = ResponseFieldName
             });
