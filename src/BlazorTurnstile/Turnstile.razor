@@ -106,7 +106,7 @@
     {
         Token = null;
         await TokenChanged.InvokeAsync(Token);
-        await OnErrorCallback.InvokeAsync();
+        await OnErrorCallback.InvokeAsync(message);
     }
 
     public async ValueTask DisposeAsync()
