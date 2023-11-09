@@ -10,7 +10,12 @@
            Theme="@TurnstileTheme.light"
            OnCallback="@TurnstileCallback"
            OnErrorCallback="@TurnstileErrorCallback"
-           ResponseField="@false" />
+           ResponseField="@false" 
+           @ref="turnstile"/>
+
+<button @onclick="RefreshTurnstile">
+    Reload Turnstile
+</button>
 
 <h3 class="mt-3">Token</h3>
 @if (_turnstileToken != null)
@@ -23,6 +28,8 @@ else
 }
 
 @code {
+    private Turnstile turnstile = default!;
+
     private string? _turnstileToken;
 
     private void TurnstileCallback(string token)
@@ -34,4 +41,10 @@ else
     {
         Console.WriteLine($"Turnstile Error: {message}");
     }
+
+    private async void RefreshTurnstile()
+    {
+        await turnstile.Reset();
+    }
+
 }

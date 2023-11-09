@@ -5,3 +5,7 @@ export function render(obj, element, parameters) {
 
     turnstile.render(element, parameters);
 }
+
+export function reset() {
+    turnstile.reset();
+}

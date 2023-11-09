@@ -109,6 +109,17 @@
         await OnErrorCallback.InvokeAsync(message);
     }
 
+    public async Task Reset()
+    {
+        if (_interop is not null)
+        {
+            Token = null;
+            await TokenChanged.InvokeAsync(Token);
+
+            await _interop.ResetAsync();            
+        }
+    }
+
     public async ValueTask DisposeAsync()
     {
         if (_interop is not null)
