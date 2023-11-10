@@ -22,6 +22,12 @@ internal class Interop : IAsyncDisposable
         await module.InvokeVoidAsync("render", component, widgetElement, parameters);
     }
 
+    public async ValueTask ResetAsync()
+    {
+        var module = await moduleTask.Value;
+        await module.InvokeVoidAsync("reset");
+    }
+
     public async ValueTask DisposeAsync()
     {
         if (moduleTask.IsValueCreated)
