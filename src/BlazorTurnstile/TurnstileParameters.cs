@@ -7,6 +7,9 @@ internal record TurnstileParameters(string sitekey)
     [JsonPropertyName("action")]
     public string Action { get; set; } = string.Empty;
 
+    [JsonPropertyName("appearance")]
+    public TurnstileAppearance? Appearance { get; set; }
+
     [JsonPropertyName("theme")]
     public TurnstileTheme? Theme { get; set; }
 

@@ -10,7 +10,8 @@
            Theme="@TurnstileTheme.light"
            OnCallback="@TurnstileCallback"
            OnErrorCallback="@TurnstileErrorCallback"
-           ResponseField="@false" 
+           ResponseField="@false"
+           Appearance="@TurnstileAppearance.interaction_only"
            @ref="turnstile"/>
 
 <button @onclick="ResetTurnstile">

@@ -43,6 +43,12 @@
     public string Action { get; set; } = string.Empty;
 
     /// <summary>
+    /// The widget apperance. The default is always and the other options are: execute and interaction-only.
+    /// </summary>
+    [Parameter]
+    public TurnstileAppearance? Appearance { get; set; }
+
+    /// <summary>
     /// The widget theme. The default is auto, which respects the user preference.
     /// </summary>
     [Parameter]
@@ -82,6 +88,7 @@
             await _interop.RenderAsync(_objRef!, _element, new TurnstileParameters(SiteKey)
             {
                 Action = Action,
+                Appearance = Appearance,
                 Theme = Theme,
                 Size = Size,
                 ResponseField = ResponseField,
