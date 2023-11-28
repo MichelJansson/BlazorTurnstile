@@ -5,7 +5,7 @@ export function render(obj, element, parameters) {
 
     // Convert non-callback parameter(s) with values containing "_" to expected values with "-" because deserliations do not respect enumerations.
     for (let key in parameters) {
-        if (!["call-back", "action", "cData"].includes(key)) {
+        if (!["call-back", "action", "cData", "response-field-name"].includes(key)) {
             if (parameters[key] && typeof parameters[key] === 'string' && parameters[key].includes("_")) {
                 parameters[key] = parameters[key].replace(/_/g, "-");
             }
