@@ -38,6 +38,7 @@ Use the `BlazorTurnstile` component to render the Cloudflare Turnstile widget.
 
 <Turnstile @bind-Token="@_turnstileToken"
            SiteKey="[your-site-key]"
+           Appeareance="@TurnstileAppearance.always"
            Theme="@TurnstileTheme.light"
            OnCallback="@TurnstileCallback"
            OnErrorCallback="@TurnstileErrorCallback"

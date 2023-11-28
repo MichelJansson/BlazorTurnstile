@@ -11,8 +11,9 @@
            OnCallback="@TurnstileCallback"
            OnErrorCallback="@TurnstileErrorCallback"
            ResponseField="@false"
-           Appearance="@TurnstileAppearance.interaction_only"
+           Appearance="@TurnstileAppearance.always"
            @ref="turnstile"/>
+
 
 <button @onclick="ResetTurnstile">
     Reset Turnstile
