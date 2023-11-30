@@ -1,21 +1,10 @@
-﻿using System.Text.Json.Serialization;
+﻿namespace BlazorTurnstile;
 
-namespace BlazorTurnstile;
-
-internal record TurnstileParameters(string sitekey)
+internal record TurnstileParameters(string Sitekey)
 {
-    [JsonPropertyName("action")]
     public string Action { get; set; } = string.Empty;
-
-    [JsonPropertyName("theme")]
     public TurnstileTheme? Theme { get; set; }
-
-    [JsonPropertyName("size")]
     public TurnstileSize? Size { get; set; }
-
-    [JsonPropertyName("response-field")]
     public bool? ResponseField { get; set; }
-
-    [JsonPropertyName("response-field-name")]
     public string? ResponseFieldName { get; set; }
 }
