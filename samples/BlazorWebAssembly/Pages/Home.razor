@@ -10,8 +10,9 @@
            Theme="@TurnstileTheme.Light"
            OnCallback="@TurnstileCallback"
            OnErrorCallback="@TurnstileErrorCallback"
-           ResponseField="@false" 
-           @ref="turnstile"/>
+           ResponseField="@false"
+           Appearance="@TurnstileAppearance.Always"
+           @ref="turnstile" />
 
 <button @onclick="ResetTurnstile">
     Reset Turnstile
@@ -46,5 +47,4 @@ else
     {
         await turnstile.ResetAsync();
     }
-
 }
