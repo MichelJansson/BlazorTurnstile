@@ -1,31 +1,25 @@
-﻿@page "/"
-@using BlazorTurnstile
-
-<PageTitle>BlazorTurnstile Samples</PageTitle>
-
-<h1>BlazorTurnstile</h1>
+﻿@using BlazorTurnstile
 
 <Turnstile @bind-Token="@_turnstileToken"
            SiteKey="1x00000000000000000000AA"
-           Theme="@TurnstileTheme.Light"
            OnCallback="@TurnstileCallback"
            OnErrorCallback="@TurnstileErrorCallback"
-           ResponseField="@false"
-           Appearance="@TurnstileAppearance.Always"
+           Theme="@TurnstileTheme.Light"
+           Appearance="@TurnstileAppearance.Execute"
+           Execution="@TurnstileExecution.Execute"
            @ref="turnstile" />
 
-<button @onclick="ResetTurnstile">
-    Reset Turnstile
-</button>
+<button class="btn btn-primary" @onclick="ExecuteTurnstile">Execute Turnstile</button>
+<button class="btn btn-secondary" @onclick="ResetTurnstile">Reset Turnstile</button>
 
-<h3 class="mt-3">Token</h3>
+<h3 class="mt-3 h4">Token:</h3>
 @if (_turnstileToken != null)
 {
     @_turnstileToken
 }
 else
 {
-    <i>Loading or error...</i>
+    <i>Waiting for execution...</i>
 }
 
 @code {
@@ -41,6 +35,11 @@ else
     private void TurnstileErrorCallback(string message)
     {
         Console.WriteLine($"Turnstile Error: {message}");
+    }
+
+    private async void ExecuteTurnstile()
+    {
+        await turnstile.ExecuteAsync();
     }
 
     private async void ResetTurnstile()

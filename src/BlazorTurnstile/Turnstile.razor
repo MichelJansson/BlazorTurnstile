@@ -49,6 +49,12 @@
     public TurnstileAppearance? Appearance { get; set; }
 
     /// <summary>
+    /// Execution controls when to obtain the token of the widget and can be on render (default) or on execute.
+    /// </summary>
+    [Parameter]
+    public TurnstileExecution? Execution { get; set; }
+
+    /// <summary>
     /// The widget theme. The default is auto, which respects the user preference.
     /// </summary>
     [Parameter]
@@ -91,6 +97,7 @@
             {
                 Action = Action,
                 Appearance = Appearance,
+                Execution = Execution,
                 Theme = Theme,
                 Size = Size,
                 ResponseField = ResponseField,
@@ -116,6 +123,14 @@
         Token = null;
         await TokenChanged.InvokeAsync(Token);
         await OnErrorCallback.InvokeAsync(message);
+    }
+
+    public async Task ExecuteAsync()
+    {
+        if (_interop != null)
+        {
+            await _interop.ExecuteAsync(_element);
+        }
     }
 
     public async Task ResetAsync()

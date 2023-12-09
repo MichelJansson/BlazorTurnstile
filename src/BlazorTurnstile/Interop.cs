@@ -41,6 +41,8 @@ internal class Interop : IAsyncDisposable
         return await module.InvokeAsync<string>("render", component, widgetElement, jsonElement);
     }
 
+    public ValueTask ExecuteAsync(ElementReference widgetElement) => _js.InvokeVoidAsync("turnstile.execute", widgetElement);
+
     public ValueTask ResetAsync(string widgetId) => _js.InvokeVoidAsync("turnstile.reset", widgetId);
 
     public ValueTask RemoveAsync(string widgetId) => _js.InvokeVoidAsync("turnstile.remove", widgetId);
