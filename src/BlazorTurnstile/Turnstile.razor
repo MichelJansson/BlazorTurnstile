@@ -72,6 +72,8 @@
     [Parameter]
     public string? ResponseFieldName { get; set; }
 
+    public string? WidgetId { get; private set; }
+
     protected override bool ShouldRender() => _shouldRender;
 
     protected override void OnInitialized()
@@ -85,7 +87,7 @@
         {
             _interop = new Interop(JS);
 
-            await _interop.RenderAsync(_objRef!, _element, new TurnstileParameters(SiteKey)
+            WidgetId = await _interop.RenderAsync(_objRef!, _element, new TurnstileParameters(SiteKey)
             {
                 Action = Action,
                 Appearance = Appearance,
@@ -118,20 +120,29 @@
 
     public async Task ResetAsync()
     {
-        if (_interop is not null)
+        if (Token != null)
         {
             Token = null;
             await TokenChanged.InvokeAsync(Token);
+        }
 
-            await _interop.ResetAsync();            
+        if (_interop != null && WidgetId != null)
+        {
+            await _interop.ResetAsync(WidgetId);
         }
     }
 
     public async ValueTask DisposeAsync()
     {
-        if (_interop is not null)
+        if (_interop != null)
         {
             await _interop.DisposeAsync();
+
+            if (WidgetId != null)
+            {
+                await _interop.RemoveAsync(WidgetId);
+                WidgetId = null;
+            }
         }
 
         _objRef?.Dispose();
