@@ -151,12 +151,20 @@
     {
         if (_interop != null)
         {
-            await _interop.DisposeAsync();
-
-            if (WidgetId != null)
+            try
             {
-                await _interop.RemoveAsync(WidgetId);
-                WidgetId = null;
+                if (WidgetId != null)
+                {
+                    await _interop.RemoveAsync(WidgetId);
+                    WidgetId = null;
+                }
+
+                await _interop.DisposeAsync();
+            }
+            catch (JSDisconnectedException)
+            {
+                // this exception may be thrown when closing or reloading the page on blazor server
+                // it is safe to ignore
             }
         }
 
