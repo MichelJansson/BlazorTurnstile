@@ -1,5 +1,10 @@
+[![Nuget version](https://img.shields.io/nuget/v/BlazorTurnstile.svg?logo=nuget)](https://www.nuget.org/packages/BlazorTurnstile/)
+[![Nuget downloads](https://img.shields.io/nuget/dt/BlazorTurnstile?logo=nuget)](https://www.nuget.org/packages/BlazorTurnstile/)
+
 # BlazorTurnstile
-A Blazor library for [Cloudflare's Turnstile](https://developers.cloudflare.com/turnstile).
+**A Blazor library for [Cloudflare's Turnstile](https://developers.cloudflare.com/turnstile).**
+
+This library provides an easy to use Component for both Blazor Server and Webassembly, with parameters for options and callbacks. See the sample project for common usages.
 
 ## Installing
 
