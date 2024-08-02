@@ -8,13 +8,13 @@
     <Authors>Michel Jansson</Authors>
     <Company></Company>
     <Copyright>Copyright 2023 (c) Michel Jansson. All rights reserved.</Copyright>
-    
     <Description>A Blazor library for Cloudflare Turnstile.</Description>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
       
     <!-- NuGet settings -->
     <PackageId>BlazorTurnstile</PackageId>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageTags>Blazor;Razor;Components;ASP.NET Core;CSharp;Web;Cloudflare;Turnstile;Captcha</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/MichelJansson/BlazorTurnstile</PackageProjectUrl>
