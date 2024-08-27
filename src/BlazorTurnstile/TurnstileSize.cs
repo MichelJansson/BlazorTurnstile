@@ -4,4 +4,5 @@ public enum TurnstileSize
 {
     Normal,
     Compact,
+    Flexible
 }
